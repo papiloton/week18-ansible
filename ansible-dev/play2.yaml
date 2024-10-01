@@ -11,6 +11,7 @@
   tasks:
     - name: check server uptime
       command: "{{my_command}}"
+      register: my_uptime
     - name: list directory
       shell: ls
     - name: check the kernel version
@@ -24,4 +25,4 @@
         name: "{{group}}"
     - name: Read data
       debug:    
-        var: kernel_output.stdout
+        var: my_uptime.stdout[:19]
